@@ -1,1 +1,147 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --red-50: #fff0f0;
+    --red-100: #ffdddd;
+    --red-200: #ffc0c0;
+    --red-300: #ff9494;
+    --red-400: #ff5757;
+    --red-500: #ff2323;
+    --red-600: #ff0000;
+    --red-700: #d70000;
+    --red-800: #b10303;
+    --red-900: #920a0a;
+    --red-950: #500000;
+}
+/* #ff0000 */
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.d-flex{
+    display: flex;
+}
+.d-grid{
+    display: grid;
+}
+.cols-4{
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+}
+.container{
+    /* width: 1240px; */
+    width: 100%;
+    margin: auto;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.gap-1{
+    gap: 10px;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.mb-1{
+    margin-bottom: 15px;
+}
+
+.mt-1{
+    margin-top: 130px;
+}
+
+.overflowx-auto{
+    overflow-x: auto;
+    min-width: none;
+}
+
+@media screen and (min-width:960px) {
+    .container{
+        width: 80%;
+    }
+    .justify-md-between{
+        justify-content: space-between;
+    }
+}
+@media screen and (min-width:1280px) {
+    .container{
+        width: 1240px;
+    }
+}
+.bug{
+    background-color: #008000;
+}
+
+.dark{
+    background-color: #000000;
+}
+
+.dragon{
+    background-color: #9a9af9;
+}
+
+.electric{
+    background-color: #ffff00;
+}
+
+.fairy{
+    background-color: rgb(241, 52, 52);
+}
+
+.fighting{
+    background-color: #e07a14,
+}
+
+.fire{
+    background-color: #b80909;
+}
+
+.flying{
+    background-color: #8a8af5;
+}
+
+.ghost{
+    background-color: #808080;
+}
+
+.grass{
+    background-color: rgb(4, 174, 4);
+}
+
+.ground{
+    background-color: rgb(138, 23, 23);
+}
+
+.ice{
+    background-color: #b9b9fc;
+}
+
+.normal{
+    background-color: #b2afaf;
+}
+
+.poison{
+    background-color: rgb(232, 32, 232);
+}
+
+.psychic{
+    background-color: rgb(255, 0, 43);
+}
+
+.rock{
+    background-color: #a52a2a;
+}
+
+.steel{
+    background-color: rgb(123, 152, 111);
+}
+
+.water{
+    background-color: #3434f0;
+}
