@@ -1,0 +1,7 @@
+.slider{
+    width: 90%;
+    overflow-x: auto;
+    margin: auto;
+    justify-content: start;
+    padding: 10px;
+  }
