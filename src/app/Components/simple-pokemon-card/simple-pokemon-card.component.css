@@ -1,0 +1,114 @@
+.pokemon-card {
+    background-color: var(--red-600);
+    width: 75%;
+    min-width: 250px;
+    max-width: 290px;
+    margin: auto;
+    height: 360px;
+    padding: 7px;
+    border-radius: 10px 0 0 10px;
+    transition: all 300ms ease;
+    cursor: pointer;
+  }
+
+  .pokemon-card:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    transform: scale(1.04);
+  }
+
+  .card-header {
+    padding: 5px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .card-footer {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .card-img-container {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background-color: #008080;
+    border: 1.5px solid #000000;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+    background-color: #ffffff;
+    border: 1.5px solid #000000;
+    border-radius: 10px;
+  }
+
+  .pokemon-name {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: max-content;
+    font-weight: bold;
+    font-size: 1.36rem;
+  }
+
+  .circle-lg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(49, 234, 200);
+    border: 2px ridge rgb(187, 187, 187);
+  }
+
+  .circle-sm {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(49, 234, 200);
+    border: 2px ridge rgb(187, 187, 187);
+  }
+
+  .circle-sm:nth-child(2) {
+    background-color: #c40606;
+  }
+
+  .circle-sm:nth-child(3) {
+    background-color: #fcb503;
+  }
+
+  .circle-sm:nth-child(4) {
+    background-color: #00ff08;
+  }
+
+  .pill {
+    width: 60px;
+    height: 20px;
+    background-color: #ffa500;
+    border-radius: 20px;
+  }
+
+  .btn-learnmore {
+    flex-basis: max-content;
+    border-radius: 10px;
+    background-color: var(--red-400);
+    color: var(--red-100);
+    padding: 10px 6px;
+    transition: all 300ms ease;
+    cursor: pointer;
+  }
+
+  .btn-learnmore:hover {
+    background-color: var(--red-700);
+  }
+
+  .card-footer>.circle-lg:first-of-type {
+    background-color: var(--red-900);
+  }
