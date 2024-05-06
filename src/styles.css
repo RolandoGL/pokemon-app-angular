@@ -27,8 +27,8 @@
     display: grid;
 }
 .cols-4{
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(1, auto);
 }
 .container{
     /* width: 1240px; */
@@ -47,6 +47,12 @@
 .justify-center{
     justify-content: center;
 }
+.align-center{
+    align-items: center;
+}
+.justify-around{
+    justify-content: space-around;
+}
 
 .mb-1{
     margin-bottom: 15px;
@@ -61,6 +67,9 @@
     min-width: none;
 }
 
+.text-capitalize{
+    text-transform: capitalize;
+}
 @media screen and (min-width:960px) {
     .container{
         width: 80%;

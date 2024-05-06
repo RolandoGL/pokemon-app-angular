@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderAppComponent } from './Components/header-app/header-app.component';
 import { SearchBarComponent } from './Components/search-bar/search-bar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     SearchBarComponent,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
