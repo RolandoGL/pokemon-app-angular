@@ -1,6 +1,6 @@
 <div class="search">
-    <form class="search-container">
-        <input type="text" class="input-text" placeholder="Find pokemon...">
-        <button type="submit" id="magnifying-glass" class="btn"></button>
-    </form>
+    <div class="search-container">
+        <input (input)="sendPokemonName()"  type="text" class="input-text" placeholder="Find pokemon..." [(ngModel)]="pokemonName">
+        <button (click)="sendPokemonName()" type="submit" class="btn"><i class="fas fa-search"></i></button>
+    </div>
 </div>

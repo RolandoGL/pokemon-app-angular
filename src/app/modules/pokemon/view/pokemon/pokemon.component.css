@@ -1,7 +1,10 @@
 .slider{
     width: 90%;
+    height: 550px;
     overflow-x: auto;
     margin: auto;
     justify-content: start;
     padding: 10px;
+    padding-left: 50px;
+    grid-template-columns: repeat(11, auto);
   }

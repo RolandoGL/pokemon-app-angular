@@ -9,6 +9,8 @@ import { PokemonPageComponent } from './view/pokemon-page/pokemon-page.component
 import { PokemonComponent } from './view/pokemon/pokemon.component';
 import { SearchBarComponent } from 'src/app/Components/search-bar/search-bar.component';
 import { SelectComponent } from 'src/app/Components/select/select.component';
+import { PaginateComponent } from 'src/app/Components/paginate/paginate.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { SelectComponent } from 'src/app/Components/select/select.component';
     PokemonCardComponent,
     SearchBarComponent,
     SelectComponent,
+    PaginateComponent,
+    FormsModule
   ]
 })
 export class PokemonModule { }

@@ -1,10 +1,9 @@
 <div style="margin-bottom: 20px;">
-    <app-pokemon-card [id]="id"/>
-    <div class="slider d-grid cols-4 justify-center gap-1 flex-">
-        <h2 style="grid-column: 1 / 5;">Related Pokémon</h2>
-        <app-simple-pokemon-card />
-        <app-simple-pokemon-card />
-        <app-simple-pokemon-card />
-        <app-simple-pokemon-card />
+    <app-pokemon-card [id]="id" (sendRelatedPokemon)="reciveRelatedPokemon($event)"/>
+    <div class="slider d-grid justify-center gap-1 flex-">
+        <h2 style="grid-column: 1 / 12;">Related Pokémon</h2>
+        <div *ngFor="let pokemon of relatedPokemonList">
+            <app-simple-pokemon-card [pokemon]="pokemon"/>
+        </div>
     </div>
 </div>

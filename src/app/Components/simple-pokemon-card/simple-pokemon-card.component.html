@@ -7,8 +7,9 @@
     </div>
     <div class="card-content">
         <figure class="card-img-container">
-            <img [src]="pokemon?.sprites?.other?.dream_world?.front_default"
-                alt="" class="card-img">
+            <!-- <img [src]="pokemon?.sprites?.other?.dream_world?.front_default"
+                alt="" class="card-img"> -->
+            <img [src]="pokemon?.sprites?.other?.showdown.front_default" alt="" class="card-img">
             <span class="pokemon-name">{{ pokemon?.name }}</span>
         </figure>
     </div>
@@ -16,7 +17,10 @@
         <div class="circle-lg"></div>
         <div class="pill"></div>
         <div class="pill"></div>
-        <div class="btn-learnmore"  (click)="navigateTo(pokemon?.id)">conoce más del pokémon</div>
+        <div class="btn-learnmore" (click)="navigateTo(pokemon?.id)">conoce más del pokémon</div>
         <div class="circle-lg"></div>
     </div>
+    <!-- <img [src]="pokemon?.sprites?.other?.dream_world?.front_default"
+                alt="" class="card-img-font"> -->
+    <img [src]="pokemon?.sprites?.other?.['official-artwork']?.front_default" alt="" class="card-img-font">
 </div>

@@ -51,7 +51,9 @@ export interface Sprites {
             front_female: null;
         };
         home: any;
-        "official-artwork": {};
+        "official-artwork": {
+            front_default:string
+        };
         showdown: any;
     };
     versions?: any;

@@ -29,11 +29,15 @@
 
 .btn {
     cursor: pointer;
+    background-color: transparent;
+    color: var(--red-500);
+    border: none;
+    font-size: 1.9rem;
     transition: all 200ms ease;
 }
 
 .btn:hover {
-    border: 0.1em solid rgb(255, 255, 255) !important;
+    color: var(--red-300)!important;
 }
 
 .btn:hover::before {
