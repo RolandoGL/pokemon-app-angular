@@ -84,73 +84,113 @@
     }
 }
 .bug{
-    background-color: #008000;
+    background-color: #008000 !important;
 }
 
 .dark{
-    background-color: #000000;
+    background-color: #000000 !important;
 }
 
 .dragon{
-    background-color: #9a9af9;
+    background-color: #9a9af9 !important;
 }
 
 .electric{
-    background-color: #ffff00;
+    background-color: #ffff00 !important;
 }
 
 .fairy{
-    background-color: rgb(241, 52, 52);
+    background-color: rgb(241, 52, 52) !important;
 }
 
 .fighting{
-    background-color: #e07a14,
+    background-color: #e07a14 !important;
 }
 
 .fire{
-    background-color: #b80909;
+    background-color: #b80909 !important;
 }
 
 .flying{
-    background-color: #8a8af5;
+    background-color: #8a8af5 !important;
 }
 
 .ghost{
-    background-color: #808080;
+    background-color: #808080 !important;
 }
 
 .grass{
-    background-color: rgb(4, 174, 4);
+    background-color: rgb(4, 174, 4) !important;
 }
 
 .ground{
-    background-color: rgb(138, 23, 23);
+    background-color: rgb(138, 23, 23) !important;
 }
 
 .ice{
-    background-color: #b9b9fc;
+    background-color: #b9b9fc !important;
 }
 
 .normal{
-    background-color: #b2afaf;
+    background-color: #b2afaf !important;
 }
 
 .poison{
-    background-color: rgb(232, 32, 232);
+    background-color: rgb(232, 32, 232) !important;
 }
 
 .psychic{
-    background-color: rgb(255, 0, 43);
+    background-color: rgb(255, 0, 43) !important;
 }
 
 .rock{
-    background-color: #a52a2a;
+    background-color: #a52a2a !important;
 }
 
 .steel{
-    background-color: rgb(123, 152, 111);
+    background-color: rgb(123, 152, 111) !important;
 }
 
 .water{
-    background-color: #3434f0;
+    background-color: #3434f0 !important;
+}
+
+
+
+/* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
+/** {
+  scrollbar-width: thin;
+  scrollbar-color: #00D46A #E1E1E1;
+}*/
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #E1E1E1;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #8B8B8B;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #373737;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #00D46A;
+  border: 1px solid #FFFFFF;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #1DA345;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #167E35;
 }

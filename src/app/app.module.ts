@@ -7,6 +7,7 @@ import { HeaderAppComponent } from './Components/header-app/header-app.component
 import { SearchBarComponent } from './Components/search-bar/search-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PokemonImageDirective } from './directives/pokemon-image.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     SearchBarComponent,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    PokemonImageDirective,
   ],
   providers: [],
   bootstrap: [AppComponent]

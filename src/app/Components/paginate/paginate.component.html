@@ -1,13 +1,13 @@
 <div class="paginate-container">
     <div class="paginate-content d-flex justify-center align-center">
-        <button class="previous-button bug d-flex justify-center align-center" 
+        <button class="previous-button bug d-flex justify-center align-center"
          (click)="previousPageEmit()" [disabled]="currentPage <= 1">
             <i class="fas fa-angle-left"></i>
         </button>
         <div class="current-page justify-center align-center">
             <span>{{ currentPage }}</span>
         </div>
-        <button class="next-button dragon d-flex justify-center align-center" 
+        <button class="next-button dragon d-flex justify-center align-center"
          (click)="nextPageEmit()" [disabled]="currentResultCount >= resultCount">
             <i class="fas fa-angle-right"></i>
         </button>

@@ -1,8 +1,8 @@
 
-<div *ngIf="isLoading; elseblock" style="margin-top: 300px;">
+<div *ngIf="isLoading" style="margin-top: 300px;">
     cargando...
 </div>
-<div class="pokemon-card" #elseblock>
+<div class="pokemon-card" *ngIf="!isLoading" typeColorSelector [typeColor]="pokemon?.types">
     <div class="card-header d-flex">
         <span class="pokemon-name1 text-capitalize">Name: {{ pokemon?.name }}</span>
         <span>Types:</span>
@@ -13,18 +13,19 @@
     <div class="card-image">
         <figure class="card-img-container">
             <!-- <img [src]="pokemon?.sprites?.other?.dream_world?.front_default" class="card-img"/> -->
-            <img [src]="pokemon?.sprites?.other?.['official-artwork']?.front_default" alt="" class="card-img">
+            <img  [src]="pokemon?.image" alt="" class="card-img" pokemonDefaultImage [image]="pokemon?.image">
         </figure>
     </div>
     <div class="card-content">
-        <div style="position: absolute; top: 0; width: 100%; color: white; display: flex; justify-content: center; gap:5px;">
+        <div class="circle" typeColorSelector [typeColor]="pokemon?.types"></div>
+        <div class="stats">
             <span class="text-capitalize" *ngFor="let stat of pokemon?.stats">{{ (stat?.stat?.name ==='special-attack' || stat?.stat?.name === 'special-defense' ) ? "" : stat?.stat?.name +": "+ stat?.base_stat  }}</span>
         </div>
         <div class="" style="padding: 5px;">
             <p style="background-color: rgba(255, 0, 0, 0); text-align: justify;">
                 Description: {{ description }}
             </p>
-            <ul style="position: absolute;top: -77%;z-index: 100;right: 0;color: white;list-style: none; text-align: left; padding: 10px;">
+            <ul class="ul">
                 Debilities
                 <li class="text-capitalize" *ngFor="let debility of debilities">{{ debility?.name }}</li>
             </ul>

@@ -9,7 +9,14 @@ export interface Result {
         }
     ];
 }
-
+export interface SmallPokemon {
+  id      : number;
+  name    : string;
+  types   : Type[];
+  gifImage: string | undefined ;
+  image   : string | undefined ;
+  stats: Stat[]
+}
 export interface Pokemon {
     abilities: any[];
     base_experience: number;

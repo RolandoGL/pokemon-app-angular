@@ -1,5 +1,5 @@
 <div class="d-flex justify-center justify-md-between flex-wrap gap-1" style="padding: 20px;">
-    <app-search-bar (pokemon)="recibePokemonName($event)"/> 
+    <app-search-bar (pokemon)="recibePokemonName($event)"/>
     <app-select [type]="types"/>
 </div>
 <div *ngIf="!resultSearch" class="result-container text-capitalize ghost mb-1" style="padding: 20px; border-radius: 20px; color: white; font-size: bold;">

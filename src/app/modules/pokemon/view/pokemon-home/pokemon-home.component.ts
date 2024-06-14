@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { filter } from 'rxjs';
-import { Pokemon, Result, Type } from 'src/app/models/pokemon.model';
+import { Pokemon, Result, SmallPokemon, Type } from 'src/app/models/pokemon.model';
 import { PokemonService } from 'src/app/services/pokemon-service.service';
 @Component({
   selector: 'app-pokemon-home',
@@ -15,14 +15,20 @@ export class PokemonHomeComponent implements OnInit {
   offset:number = 0
   limit:number = 20
   count:number = 0
-  pokemonList: Pokemon[] = []
-  pokemonListTemp: Pokemon[] = []
+  pokemonList: SmallPokemon[] = []
+  pokemonListTemp: SmallPokemon[] = []
   types: any[] = []
   constructor(private _pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    this.getPokemonList()
-    this.getAllTypes()
+    this.pokemonList = this._pokemonService.pokemonList
+    this.types = this._pokemonService.pokemonTypes
+    this.count = this._pokemonService.count
+    if( this.pokemonList.length === 0 || this.types.length === 0 ){
+      this.getPokemonList()
+      this.getAllTypes()
+    }
+
   }
 
   public getPokemonList(){
@@ -34,13 +40,13 @@ export class PokemonHomeComponent implements OnInit {
       this.result.results.forEach( (item, index) => {
         this._pokemonService.getPokemonDetail(item.url).subscribe(pokemon =>{
           this.pokemonList.push(pokemon)
-          this.pokemonListTemp = this.pokemonList
         })
       });
     })
   }
 
   public getNextPage(){
+
     this.offset = this.offset + 20
     this.currentPage++
     this.getPokemonList()
@@ -65,7 +71,7 @@ export class PokemonHomeComponent implements OnInit {
       this._pokemonService.getPokemonByName($event)
       .subscribe({
         next: pokemon =>{
-          this.pokemonList.push(pokemon)
+          // this.pokemonList.push(pokemon)
           this.resultSearch = true
         },
         error:(error:any)=> this.resultSearch = false

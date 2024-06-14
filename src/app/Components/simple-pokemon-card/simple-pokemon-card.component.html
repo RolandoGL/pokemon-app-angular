@@ -9,7 +9,7 @@
         <figure class="card-img-container">
             <!-- <img [src]="pokemon?.sprites?.other?.dream_world?.front_default"
                 alt="" class="card-img"> -->
-            <img [src]="pokemon?.sprites?.other?.showdown.front_default" alt="" class="card-img">
+            <img [src]="pokemon?.gifImage" alt="" class="card-img" pokemonDefaultImage [image]="pokemon?.gifImage">
             <span class="pokemon-name">{{ pokemon?.name }}</span>
         </figure>
     </div>
@@ -22,5 +22,6 @@
     </div>
     <!-- <img [src]="pokemon?.sprites?.other?.dream_world?.front_default"
                 alt="" class="card-img-font"> -->
-    <img [src]="pokemon?.sprites?.other?.['official-artwork']?.front_default" alt="" class="card-img-font">
+    <img [src]="pokemon?.image" alt="" class="card-img-font" pokemonDefaultImage
+     [image]="pokemon?.image">
 </div>
