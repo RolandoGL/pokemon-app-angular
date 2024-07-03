@@ -11,6 +11,7 @@ import { SearchBarComponent } from 'src/app/Components/search-bar/search-bar.com
 import { SelectComponent } from 'src/app/Components/select/select.component';
 import { PaginateComponent } from 'src/app/Components/paginate/paginate.component';
 import { FormsModule } from '@angular/forms';
+import { LoaderComponent } from 'src/app/Components/loader/loader.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     SearchBarComponent,
     SelectComponent,
     PaginateComponent,
-    FormsModule
+    FormsModule,
+    LoaderComponent
   ]
 })
 export class PokemonModule { }

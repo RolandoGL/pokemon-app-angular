@@ -15,11 +15,12 @@ import { TypeColorSelectorDirective } from 'src/app/directives/type-color-select
 export class PokemonCardComponent implements OnInit, OnChanges {
   @Input() id: Number = 0
   @Output() sendRelatedPokemon = new EventEmitter<SmallPokemon[]>()
+  @Output() sendIsLoading = new EventEmitter<boolean>()
   pokemon: SmallPokemon | null = null
   relatedPokemon: SmallPokemon[] = []
   debilities: any[] = []
   description: string = 'pokemon description'
-  isLoading: boolean = false
+  // isLoading: boolean = false
   constructor(private _pokemonService: PokemonService) { }
   ngOnInit(): void {
     this.getPokemon(this.id)
@@ -30,19 +31,19 @@ export class PokemonCardComponent implements OnInit, OnChanges {
     const {currentValue, previousValue} = changes['id']
     if(currentValue != previousValue) {
       this.sendRelatedPokemon.emit([])
+      this.sendIsLoading.emit(true)
       this.getPokemon(currentValue)
 
     }
 
   }
   public getPokemon(id: Number) {
-    this.isLoading = true
     this._pokemonService.getPokemonById(id).subscribe(pokemon => {
 
       this.pokemon = pokemon
       this.getDescription(pokemon.id)
       this.getDebilities(pokemon.types)
-       this.isLoading = false
+      this.sendIsLoading.emit(false)
     })
   }
 

@@ -10,9 +10,10 @@ import { PokemonService } from 'src/app/services/pokemon-service.service';
 export class PokemonHomeComponent implements OnInit {
   result?: Result
   resultSearch: boolean = true
+  isLoading: boolean = false
   currentPage: number = 1
   resultsCount: number = 20
-  offset:number = 0
+  offset:number = 20
   limit:number = 20
   count:number = 0
   pokemonList: SmallPokemon[] = []
@@ -24,6 +25,9 @@ export class PokemonHomeComponent implements OnInit {
     this.pokemonList = this._pokemonService.pokemonList
     this.types = this._pokemonService.pokemonTypes
     this.count = this._pokemonService.count
+    this.currentPage =  this._pokemonService.currentPage
+    this.offset = this._pokemonService.offset
+
     if( this.pokemonList.length === 0 || this.types.length === 0 ){
       this.getPokemonList()
       this.getAllTypes()
@@ -32,7 +36,10 @@ export class PokemonHomeComponent implements OnInit {
   }
 
   public getPokemonList(){
-    const res = this._pokemonService.getAllPokemon(this.offset, this.limit).subscribe(res => {
+    this.isLoading = true
+    // this.currentPage = this.currentPage + 1
+    // console.log(this.offset)
+    const res = this._pokemonService.getAllPokemon(this.offset, this.limit, this.currentPage ).subscribe(res => {
       this.result = res
       const { count } = res
       this.count = count
@@ -42,6 +49,7 @@ export class PokemonHomeComponent implements OnInit {
           this.pokemonList.push(pokemon)
         })
       });
+      this.isLoading = false
     })
   }
 
@@ -50,14 +58,14 @@ export class PokemonHomeComponent implements OnInit {
     this.offset = this.offset + 20
     this.currentPage++
     this.getPokemonList()
-    this.resultsCount += 20
+    // this.resultsCount += this.offset
   }
 
   public getPreviousPage(){
     this.offset = (this.offset <= 0 )? 0 : this.offset - 20
     this.currentPage--
     this.getPokemonList()
-    this.resultsCount -= 20
+    // this.resultsCount -= 20
   }
 
   public recibePokemonName($event:string):string{

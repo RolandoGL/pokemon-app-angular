@@ -1,8 +1,5 @@
 
-<div *ngIf="isLoading" style="margin-top: 300px;">
-    cargando...
-</div>
-<div class="pokemon-card" *ngIf="!isLoading" typeColorSelector [typeColor]="pokemon?.types">
+<div class="pokemon-card" typeColorSelector [typeColor]="pokemon?.types">
     <div class="card-header d-flex">
         <span class="pokemon-name1 text-capitalize">Name: {{ pokemon?.name }}</span>
         <span>Types:</span>
@@ -12,7 +9,6 @@
     </div>
     <div class="card-image">
         <figure class="card-img-container">
-            <!-- <img [src]="pokemon?.sprites?.other?.dream_world?.front_default" class="card-img"/> -->
             <img  [src]="pokemon?.image" alt="" class="card-img" pokemonDefaultImage [image]="pokemon?.image">
         </figure>
     </div>

@@ -16,7 +16,7 @@ export class PaginateComponent {
   @Output() previousPage = new EventEmitter<void>()
 
   nextPageEmit(){
-    console.log(1)
+    // console.log(1)
     this.nextPage.emit()
   }
   previousPageEmit(){

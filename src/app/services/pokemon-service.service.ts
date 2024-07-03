@@ -10,19 +10,22 @@ export class PokemonService {
   private $baseURL:string = 'https://pokeapi.co/api/v2/'
   public pokemonList: SmallPokemon[] = []
   public pokemonTypes: [] = []
-  public count: number = 0
-  public currentPage: number = 0
-  public offset: number = 0
+  public count: number = 1
+  public currentPage: number = 1
+  public offset: number = 20
 
   constructor( private _httpClient: HttpClient) {
     this.loadPokemonFromLocalStorage()
   }
 
-  public getAllPokemon(offset:number=0, limmit:number=20):Observable<Result>{
-    return this._httpClient.get<any>(this.$baseURL+`pokemon/?offset=${offset}&limit=${limmit}`)
+  public getAllPokemon(offsetParam:number, limmit:number=20, page: number ):Observable<Result>{
+    this.offset = offsetParam
+    this.currentPage = page
+    return this._httpClient.get<any>(this.$baseURL+`pokemon/?offset=${offsetParam-20}&limit=${limmit}`)
     .pipe(
       tap(pokemon => this.count = pokemon.count ),
       tap( ()=> this.pokemonList = []),
+      delay(300),
     )
   }
 
@@ -40,6 +43,7 @@ export class PokemonService {
         }
       )),
       tap( pokemon => this.pokemonList.push( pokemon ) ),
+      tap( pokemon => this.pokemonList = this.pokemonList.slice(0,20) ),
       tap( () => this.savePokemonToLocalStorage() )
     )
 
@@ -93,16 +97,23 @@ export class PokemonService {
     localStorage.setItem('pokemonItems', JSON.stringify( this.pokemonList ))
     localStorage.setItem('pokemonTypes', JSON.stringify( this.pokemonTypes ))
     localStorage.setItem('counterResult', JSON.stringify( this.count ))
+    localStorage.setItem('currentPage', JSON.stringify( this.currentPage ))
+    localStorage.setItem('currentOffset', JSON.stringify( this.offset ))
   }
 
   public loadPokemonFromLocalStorage(){
     const pokemon = localStorage.getItem('pokemonItems')
     const types   = localStorage.getItem('pokemonTypes')
     const counter = localStorage.getItem('counterResult')
-    if( !pokemon || !types  ) return
+    const offset = localStorage.getItem('currentOffset')
+    const page = localStorage.getItem('currentPage')
+    if( !pokemon || !types || !counter || !offset || !page  ) return
 
     this.pokemonList = JSON.parse( pokemon! )
+    this.pokemonList = this.pokemonList.slice(0,20)
     this.pokemonTypes = JSON.parse( types! )
     this.count = JSON.parse( counter! )
+    this.currentPage = JSON.parse( page! )
+    this.offset = JSON.parse( offset! )
   }
 }

@@ -10,6 +10,7 @@ import { Pokemon, SmallPokemon } from 'src/app/models/pokemon.model';
 export class PokemonComponent implements OnInit {
   id:Number = 0
   relatedPokemonList: SmallPokemon[] = []
+  isLoading: boolean = true
   constructor( private _route: ActivatedRoute){}
 
   ngOnInit(): void {
@@ -18,5 +19,8 @@ export class PokemonComponent implements OnInit {
 
   public reciveRelatedPokemon($event:SmallPokemon[]){
     this.relatedPokemonList = $event
+  }
+  public reciveIsLoading($event:boolean){
+    this.isLoading = $event
   }
 }

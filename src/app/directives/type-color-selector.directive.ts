@@ -9,7 +9,7 @@ import { PokemonType } from '../models/pokemonType.model';
 export class TypeColorSelectorDirective {
 
   @Input() set typeColor( value:Type[] | undefined ){
-
+    if( !value ) return
   for (let index = 0; index < value!.length; index++) {
         const element: any = value![index];
         if( Object.values(PokemonType).includes(element.type.name) ){

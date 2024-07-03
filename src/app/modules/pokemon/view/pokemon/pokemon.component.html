@@ -1,5 +1,5 @@
 <div style="margin-bottom: 20px;">
-    <app-pokemon-card [id]="id" (sendRelatedPokemon)="reciveRelatedPokemon($event)"/>
+    <app-pokemon-card [id]="id" (sendRelatedPokemon)="reciveRelatedPokemon($event)" (sendIsLoading)="reciveIsLoading($event)"/>
     <div class="slider d-grid justify-center gap-1 flex-">
         <h2 style="grid-column: 1 / 12;">Related Pokémon</h2>
         <div *ngFor="let pokemon of relatedPokemonList">
@@ -7,3 +7,4 @@
         </div>
     </div>
 </div>
+<app-loader *ngIf="isLoading"/>

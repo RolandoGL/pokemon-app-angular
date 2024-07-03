@@ -10,5 +10,7 @@
     <app-simple-pokemon-card *ngFor="let pokemon of pokemonList" [pokemon]="pokemon"/>
 </div>
 <div>
-    <app-paginate [resultCount]="count" [currentResultCount]="resultsCount" [currentPage]="currentPage" (nextPage)="getNextPage()" (previousPage)="getPreviousPage()"/>
+    <app-paginate [resultCount]="count" [currentResultCount]="offset" [currentPage]="currentPage" (nextPage)="getNextPage()" (previousPage)="getPreviousPage()"/>
 </div>
+
+<app-loader *ngIf="isLoading"/>
