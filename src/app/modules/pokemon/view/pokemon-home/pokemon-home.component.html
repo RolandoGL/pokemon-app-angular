@@ -1,16 +1,21 @@
-<div class="d-flex justify-center justify-md-between flex-wrap gap-1" style="padding: 20px;">
+
+  <div class="d-flex justify-center justify-md-between flex-wrap gap-1" style="padding: 20px;">
     <app-search-bar (pokemon)="recibePokemonName($event)"/>
     <app-select [type]="types"/>
+    <app-history-component (selectedItem)="reciveItem($event)"/>
 </div>
 <div *ngIf="!resultSearch" class="result-container text-capitalize ghost mb-1" style="padding: 20px; border-radius: 20px; color: white; font-size: bold;">
     <span>Pokemon not found</span>
 </div>
 <!-- <h1>tamano: {{pokemonList.length}}</h1> -->
-<div class="d-flex flex-wrap gap-1 justify-center mb-1">
+<div class="d-flex flex-wrap gap-1 justify-center mb-1" style="margin-bottom: 100px;">
     <app-simple-pokemon-card *ngFor="let pokemon of pokemonList" [pokemon]="pokemon"/>
 </div>
 <div>
-    <app-paginate [resultCount]="count" [currentResultCount]="offset" [currentPage]="currentPage" (nextPage)="getNextPage()" (previousPage)="getPreviousPage()"/>
+    <app-paginate class="p-f-bottom" [resultCount]="count" [currentResultCount]="offset" [currentPage]="currentPage" (nextPage)="getNextPage()" (previousPage)="getPreviousPage()"/>
 </div>
 
+
 <app-loader *ngIf="isLoading"/>
+
+

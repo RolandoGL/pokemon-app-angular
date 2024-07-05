@@ -10,11 +10,13 @@ export class PokemonService {
   private $baseURL:string = 'https://pokeapi.co/api/v2/'
   public pokemonList: SmallPokemon[] = []
   public pokemonTypes: [] = []
+  public history: string[] = []
   public count: number = 1
   public currentPage: number = 1
   public offset: number = 20
 
   constructor( private _httpClient: HttpClient) {
+
     this.loadPokemonFromLocalStorage()
   }
 
@@ -80,9 +82,36 @@ export class PokemonService {
            )
   }
 
-  public getPokemonByName(pokemon:string):Observable<Pokemon>{
-    let pokemonN = pokemon.toLocaleLowerCase()
-    return this._httpClient.get<Pokemon>('https://pokeapi.co/api/v2/pokemon/'+pokemonN)
+  public getPokemonByName(pokemon:string):Observable<SmallPokemon>{
+    // console.log(this.history)
+
+    pokemon = pokemon.toLowerCase()
+    this.organizeHistoiry( pokemon )
+    return this._httpClient.get<Pokemon>('https://pokeapi.co/api/v2/pokemon/'+pokemon)
+    .pipe(
+      delay(1000),
+      map( pokemon => (
+        {
+          id      : pokemon.id,
+          name    : pokemon.name,
+          types   : pokemon.types,
+          gifImage: pokemon?.sprites?.other?.showdown.front_default,
+          image   : pokemon?.sprites?.other?.['official-artwork']?.front_default,
+          stats   : pokemon.stats
+        }
+      ))
+    )
+  }
+
+  private organizeHistoiry( term:string ):void{
+    term = term.toLowerCase()
+
+    if( this.history.includes( term ) ){
+      this.history = this.history.filter( oldTerm => oldTerm !== term )
+    }
+    this.history.unshift( term )
+    this.history = this.history.splice(0, 10)
+    this.savePokemonToLocalStorage()
   }
 
   public getPokemonType():Observable<[]>{
@@ -99,6 +128,7 @@ export class PokemonService {
     localStorage.setItem('counterResult', JSON.stringify( this.count ))
     localStorage.setItem('currentPage', JSON.stringify( this.currentPage ))
     localStorage.setItem('currentOffset', JSON.stringify( this.offset ))
+    localStorage.setItem('history', JSON.stringify( this.history ))
   }
 
   public loadPokemonFromLocalStorage(){
@@ -107,6 +137,7 @@ export class PokemonService {
     const counter = localStorage.getItem('counterResult')
     const offset = localStorage.getItem('currentOffset')
     const page = localStorage.getItem('currentPage')
+    const history = localStorage.getItem('history')
     if( !pokemon || !types || !counter || !offset || !page  ) return
 
     this.pokemonList = JSON.parse( pokemon! )
@@ -115,5 +146,6 @@ export class PokemonService {
     this.count = JSON.parse( counter! )
     this.currentPage = JSON.parse( page! )
     this.offset = JSON.parse( offset! )
+    this.history = history? JSON.parse( history! ) : []
   }
 }

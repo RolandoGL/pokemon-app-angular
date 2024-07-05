@@ -1,0 +1,11 @@
+<div class="history-container">
+  <ul class="history-list" *ngIf=" historyItems.length > 0; else elseblock">
+    <li class="history-item" *ngFor="let item of historyItems"
+      (click)="sendItem( item )">{{ item }}</li>
+  </ul>
+ <ng-template #elseblock>
+  <ul class="history-list">
+    <li class="history-item"> There no history</li>
+  </ul>
+ </ng-template>
+</div>

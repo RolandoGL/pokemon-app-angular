@@ -19,6 +19,7 @@ export class PokemonHomeComponent implements OnInit {
   pokemonList: SmallPokemon[] = []
   pokemonListTemp: SmallPokemon[] = []
   types: any[] = []
+  history: string[] = []
   constructor(private _pokemonService: PokemonService) { }
 
   ngOnInit(): void {
@@ -27,6 +28,7 @@ export class PokemonHomeComponent implements OnInit {
     this.count = this._pokemonService.count
     this.currentPage =  this._pokemonService.currentPage
     this.offset = this._pokemonService.offset
+    this.history = this._pokemonService.history
 
     if( this.pokemonList.length === 0 || this.types.length === 0 ){
       this.getPokemonList()
@@ -69,27 +71,48 @@ export class PokemonHomeComponent implements OnInit {
   }
 
   public recibePokemonName($event:string):string{
-    if($event.length < 3 || $event === ''){
-      this.resultSearch = true
-      this.pokemonList = this.pokemonListTemp
+    if( $event.trim() === "" ) {
+      this.pokemonList = this._pokemonService.pokemonList
       return ''
     }
-    if($event.length >= 3){
-      this.pokemonList = []
-      this._pokemonService.getPokemonByName($event)
-      .subscribe({
-        next: pokemon =>{
-          // this.pokemonList.push(pokemon)
-          this.resultSearch = true
-        },
-        error:(error:any)=> this.resultSearch = false
-      })
-      return ''
-    }
+    this.resultSearch = false
+    this.pokemonList = []
+    this._pokemonService.getPokemonByName($event)
+    .subscribe({
+      next: pokemon =>{
+        this.pokemonList.push(pokemon)
+        this.resultSearch = true
+      },
+      error:(error:any)=>{
+        this.resultSearch = false
+        this.pokemonList = this._pokemonService.pokemonList
+        setTimeout( () => this.resultSearch = true, 1000);
+      }
+    })
     return ''
+  }
+
+  public reciveItem(term: string ):void{
+    this.pokemonList = []
+    this.isLoading = true
+    this._pokemonService.getPokemonByName(term)
+    .subscribe({
+      next: pokemon =>{
+        this.pokemonList.push(pokemon)
+        this.isLoading = false
+      },
+      error:(error:any)=> {
+        this.resultSearch = false
+        this.isLoading = false
+        this.pokemonList = this._pokemonService.pokemonList
+        setTimeout( () => this.resultSearch = true, 1000);
+      }
+    })
   }
 
   public getAllTypes(){
   this._pokemonService.getPokemonType().subscribe(type => this.types = type)
   }
+
+
 }

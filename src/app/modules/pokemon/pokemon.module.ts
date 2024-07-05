@@ -12,6 +12,7 @@ import { SelectComponent } from 'src/app/Components/select/select.component';
 import { PaginateComponent } from 'src/app/Components/paginate/paginate.component';
 import { FormsModule } from '@angular/forms';
 import { LoaderComponent } from 'src/app/Components/loader/loader.component';
+import { HistoryComponentComponent } from 'src/app/Components/history-component/history-component.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { LoaderComponent } from 'src/app/Components/loader/loader.component';
     SelectComponent,
     PaginateComponent,
     FormsModule,
-    LoaderComponent
+    LoaderComponent,
+    HistoryComponentComponent
   ]
 })
 export class PokemonModule { }
